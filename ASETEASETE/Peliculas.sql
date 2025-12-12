@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: bbdd
--- Tiempo de generación: 12-12-2025 a las 19:37:35
+-- Tiempo de generación: 12-12-2025 a las 20:21:54
 -- Versión del servidor: 5.7.44
 -- Versión de PHP: 8.2.27
 
@@ -80,15 +80,15 @@ CREATE TABLE `Clientes` (
   `Apellidos` varchar(100) COLLATE utf8_bin NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
   `Localidad` varchar(100) COLLATE utf8_bin NOT NULL,
-  `password_hash` varchar(255) COLLATE utf8_bin NOT NULL
+  `Password` varchar(255) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `Clientes`
 --
 
-INSERT INTO `Clientes` (`Id`, `Nombre`, `Apellidos`, `Fecha_Nacimiento`, `Localidad`, `password_hash`) VALUES
-(1, 'Pedro', 'Díaz', '1990-01-01', 'Gijón', ''),
+INSERT INTO `Clientes` (`Id`, `Nombre`, `Apellidos`, `Fecha_Nacimiento`, `Localidad`, `Password`) VALUES
+(1, 'Pedro', 'Díaz', '1990-01-01', 'Gijón', '����l�tx���*o���f��i��uB����'),
 (2, 'Guillermo', 'Rosas', '1985-03-01', 'Gijón', ''),
 (3, 'Martina', 'Martínez', '1984-07-25', 'Avilés', ''),
 (4, 'Francisco', 'Villalba', '1996-03-02', 'Oviedo', ''),
