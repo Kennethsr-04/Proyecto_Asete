@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura del Proyecto - Videoclub-Biblioteca</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section {
+            background: white;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            background: #667eea;
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        
+        .section-content {
+            padding: 1.5rem;
+        }
+        
+        .file-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-left: 4px solid #667eea;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .file-name {
+            font-family: monospace;
+            font-weight: bold;
+            color: #667eea;
+            word-break: break-all;
+        }
+        
+        .file-desc {
+            color: #666;
+        }
+        
+        .file-desc strong {
+            color: #333;
+        }
+        
+        .icon {
+            display: inline-block;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .type-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            margin: 0.5rem 0;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        .badge-page {
+            background: #ffeaa7;
+            color: #d63031;
+        }
+        
+        .badge-class {
+            background: #a8e6cf;
+            color: #27ae60;
+        }
+        
+        .badge-config {
+            background: #dfe6e9;
+            color: #2d3436;
+        }
+        
+        .badge-style {
+            background: #fd79a8;
+            color: #fff;
+        }
+        
+        .badge-lang {
+            background: #74b9ff;
+            color: #fff;
+        }
+        
+        .badge-doc {
+            background: #a29bfe;
+            color: #fff;
+        }
+        
+        .tree {
+            background: #2d3436;
+            color: #e8e8e8;
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .tree-item {
+            margin: 0.3rem 0;
+        }
+        
+        .tree-folder::before {
+            content: "📁 ";
+        }
+        
+        .tree-file::before {
+            content: "📄 ";
+        }
+        
+        .tree-indent {
+            margin-left: 2rem;
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .link-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .link-card strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .link-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-card {
+            background: #f0f3ff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🎬📚 Videoclub-Biblioteca</h1>
+    <p>Estructura del Proyecto - Versión 1.0</p>
+</div>
+
+<div class="container">
+    
+    <!-- Estadísticas -->
+    <div class="section">
+        <div class="section-title">📊 Estadísticas del Proyecto</div>
+        <div class="section-content">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Páginas PHP</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Clases Java</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Hojas de Estilo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Idiomas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Tablas BD</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Documentos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estructura Árbol -->
+    <div class="section">
+        <div class="section-title">🗂️ Estructura de Carpetas</div>
+        <div class="section-content">
+            <div class="tree">
+                <div class="tree-item tree-folder">ProyectoAsete/</div>
+                <div class="tree-item tree-indent tree-file">index.php</div>
+                <div class="tree-item tree-indent tree-file">login.php</div>
+                <div class="tree-item tree-indent tree-file">logout.php</div>
+                <div class="tree-item tree-indent tree-file">Catalogo.php</div>
+                <div class="tree-item tree-indent tree-file">catalogo_libros.php</div>
+                <div class="tree-item tree-indent tree-file">filtro.php</div>
+                <div class="tree-item tree-indent tree-file">filtro_libros.php</div>
+                <div class="tree-item tree-indent tree-file">agregar_peliculas.php</div>
+                <div class="tree-item tree-indent tree-file">agregar_libros.php</div>
+                <div class="tree-item tree-indent tree-file">db.php</div>
+                <div class="tree-item tree-indent tree-folder">classes/</div>
+                <div class="tree-item tree-indent tree-indent tree-file">Catalogo.php</div>
+                <div class="tree-item tree-indent tree-folder">lang/</div>
+                <div class="tree-item tree-indent tree-indent tree-file">es.php</div>
+                <div class="tree-item tree-indent tree-indent tree-file">en.php</div>
+                <div class="tree-item tree-indent tree-folder">style/</div>
+                <div class="tree-item tree-indent tree-indent tree-file">catalogo.css</div>
+                <div class="tree-item tree-indent tree-indent tree-file">agregar_pelicula.css</div>
+                <div class="tree-item tree-indent tree-indent tree-file">filtro.css</div>
+                <div class="tree-item tree-indent tree-indent tree-file">login.css</div>
+                <div class="tree-item tree-indent tree-indent tree-file">idioma.css</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Páginas -->
+    <div class="section">
+        <div class="section-title">📄 Páginas de Usuario</div>
+        <div class="section-content">
+            
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🔐</span>login.php</div>
+                <div>
+                    <div class="file-desc"><strong>Autenticación de usuarios</strong><br>
+                    Página de inicio de sesión. Valida credenciales contra tabla Clientes. Hash SHA256.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🏠</span>index.php</div>
+                <div>
+                    <div class="file-desc"><strong>Panel Principal</strong><br>
+                    Dashboard después del login. Acceso a películas y libros.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎬</span>Catalogo.php</div>
+                <div>
+                    <div class="file-desc"><strong>Catálogo de Películas</strong><br>
+                    Muestra tabla de películas. Filtros: género, año, director. Integrado con BD.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📚</span>catalogo_libros.php</div>
+                <div>
+                    <div class="file-desc"><strong>Catálogo de Libros</strong><br>
+                    Muestra tabla de libros con autores. Filtros: género, autor, año.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🔍</span>filtro.php</div>
+                <div>
+                    <div class="file-desc"><strong>Filtro de Películas</strong><br>
+                    Formulario para seleccionar filtros. Géneros dinámicos desde BD.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🔍</span>filtro_libros.php</div>
+                <div>
+                    <div class="file-desc"><strong>Filtro de Libros</strong><br>
+                    Formulario con dropdown de autores. Filtros: autor, género, año.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">➕</span>agregar_peliculas.php</div>
+                <div>
+                    <div class="file-desc"><strong>Agregar Película</strong><br>
+                    Formulario para insertar película. INSERT en tabla Peliculas. Validación.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">➕</span>agregar_libros.php</div>
+                <div>
+                    <div class="file-desc"><strong>Agregar Libro</strong><br>
+                    Formulario para insertar libro. Dropdown de autores. INSERT en Libros.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🚪</span>logout.php</div>
+                <div>
+                    <div class="file-desc"><strong>Cierre de Sesión</strong><br>
+                    Destruye sesión del usuario. Redirige a login.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">✓</span>verificar_instalacion.php</div>
+                <div>
+                    <div class="file-desc"><strong>Verificador de Setup</strong><br>
+                    Comprueba PHP, MySQLi, archivos, conexión BD. Dashboard de diagnóstico.
+                    </div>
+                    <span class="type-badge badge-page">Página</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Clases -->
+    <div class="section">
+        <div class="section-title">⚙️ Clases PHP</div>
+        <div class="section-content">
+            
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📊</span>classes/Catalogo.php</div>
+                <div>
+                    <div class="file-desc"><strong>Data Access Object (DAO)</strong><br>
+                    Centraliza CRUD: obtenerPeliculas(), agregarLibro(), etc. 11 métodos públicos. Escaping SQL.
+                    </div>
+                    <span class="type-badge badge-class">Clase</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎥</span>Pelicula.php</div>
+                <div>
+                    <div class="file-desc"><strong>Modelo de Película</strong><br>
+                    Extiende Producto. Propiedades: director, actores, tipoAdaptacion, adaptacionId.
+                    </div>
+                    <span class="type-badge badge-class">Clase</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📖</span>Libro.php</div>
+                <div>
+                    <div class="file-desc"><strong>Modelo de Libro</strong><br>
+                    Extiende Producto. Propiedades: autorId, autorNombre, editorial, paginas. FK a Autores.
+                    </div>
+                    <span class="type-badge badge-class">Clase</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🏗️</span>Producto.php</div>
+                <div>
+                    <div class="file-desc"><strong>Clase Abstracta Base</strong><br>
+                    Define interfaz común. Propiedades: id, titulo, genero, anio, precio.
+                    </div>
+                    <span class="type-badge badge-class">Clase</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🔄</span>InfoComun.php</div>
+                <div>
+                    <div class="file-desc"><strong>Trait Compartido</strong><br>
+                    Implementa resumen(). Usado por Pelicula y Libro. Composición sobre herencia.
+                    </div>
+                    <span class="type-badge badge-class">Trait</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Configuración -->
+    <div class="section">
+        <div class="section-title">⚙️ Archivos de Configuración</div>
+        <div class="section-content">
+            
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🗄️</span>db.php</div>
+                <div>
+                    <div class="file-desc"><strong>Conexión a Base de Datos</strong><br>
+                    MySQLi a servidor "bbdd". BD "Peliculas". Credenciales: root/bbdd.
+                    </div>
+                    <span class="type-badge badge-config">Config</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🌐</span>internacionalizacion.php</div>
+                <div>
+                    <div class="file-desc"><strong>Configuración de Idiomas</strong><br>
+                    Detecta idioma de sesión. Carga lang/es.php o lang/en.php. Array $traducciones.
+                    </div>
+                    <span class="type-badge badge-config">Config</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎨</span>caja-idiomas.html</div>
+                <div>
+                    <div class="file-desc"><strong>Selector de Idioma</strong><br>
+                    Componente UI. Banderas de España 🇪🇸 e Inglaterra 🇬🇧.
+                    </div>
+                    <span class="type-badge badge-config">HTML</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Estilos -->
+    <div class="section">
+        <div class="section-title">🎨 Hojas de Estilo</div>
+        <div class="section-content">
+            
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎨</span>style/catalogo.css</div>
+                <div>
+                    <div class="file-desc"><strong>Estilos Catálogos</strong><br>
+                    Tablas, container, toolbar, user-info, mensajes. Gradientes modernos.
+                    </div>
+                    <span class="type-badge badge-style">CSS</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎨</span>style/agregar_pelicula.css</div>
+                <div>
+                    <div class="file-desc"><strong>Estilos Formularios</strong><br>
+                    Campos, botones, validación. Usado para películas y libros.
+                    </div>
+                    <span class="type-badge badge-style">CSS</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎨</span>style/filtro.css</div>
+                <div>
+                    <div class="file-desc"><strong>Estilos Filtros</strong><br>
+                    Formularios de búsqueda. Selects, inputs, botones.
+                    </div>
+                    <span class="type-badge badge-style">CSS</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎨</span>style/login.css</div>
+                <div>
+                    <div class="file-desc"><strong>Estilos Login</strong><br>
+                    Formulario de autenticación. Centrado, gradiente de fondo.
+                    </div>
+                    <span class="type-badge badge-style">CSS</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🎨</span>style/idioma.css</div>
+                <div>
+                    <div class="file-desc"><strong>Estilos Idioma</strong><br>
+                    Selector de lengua. Banderas, dropdown.
+                    </div>
+                    <span class="type-badge badge-style">CSS</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Idiomas -->
+    <div class="section">
+        <div class="section-title">🌍 Archivos de Idioma</div>
+        <div class="section-content">
+            
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🇪🇸</span>lang/es.php</div>
+                <div>
+                    <div class="file-desc"><strong>Traducciones Español</strong><br>
+                    Array $traducciones con todas las etiquetas en español.
+                    </div>
+                    <span class="type-badge badge-lang">Lang</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">🇬🇧</span>lang/en.php</div>
+                <div>
+                    <div class="file-desc"><strong>Traducciones Inglés</strong><br>
+                    Array $traducciones con todas las etiquetas en inglés.
+                    </div>
+                    <span class="type-badge badge-lang">Lang</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Documentación -->
+    <div class="section">
+        <div class="section-title">📚 Documentación</div>
+        <div class="section-content">
+            
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📖</span>README.md</div>
+                <div>
+                    <div class="file-desc"><strong>Introducción General</strong><br>
+                    Descripción, requisitos, instalación, estructura, funcionalidades.
+                    </div>
+                    <span class="type-badge badge-doc">Markdown</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📖</span>INSTRUCCIONES.md</div>
+                <div>
+                    <div class="file-desc"><strong>Manual de Usuario</strong><br>
+                    Guía paso a paso. Cómo usar login, filtros, agregar, idiomas.
+                    </div>
+                    <span class="type-badge badge-doc">Markdown</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📖</span>ESTRUCTURA.md</div>
+                <div>
+                    <div class="file-desc"><strong>Arquitectura Técnica</strong><br>
+                    Diseño, clases, BD, seguridad, patrones, debugging.
+                    </div>
+                    <span class="type-badge badge-doc">Markdown</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📖</span>CHANGELOG.md</div>
+                <div>
+                    <div class="file-desc"><strong>Historial de Cambios</strong><br>
+                    Versión 1.0. Nuevas funcionalidades, cambios, correcciones.
+                    </div>
+                    <span class="type-badge badge-doc">Markdown</span>
+                </div>
+            </div>
+
+            <div class="file-item">
+                <div class="file-name"><span class="icon">📖</span>SCRIPT_EJEMPLOS.sql</div>
+                <div>
+                    <div class="file-desc"><strong>Ejemplos SQL</strong><br>
+                    Scripts para insertar datos de prueba. Ejemplos de queries útiles.
+                    </div>
+                    <span class="type-badge badge-doc">SQL</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Base de Datos -->
+    <div class="section">
+        <div class="section-title">🗄️ Base de Datos</div>
+        <div class="section-content">
+            <p><strong>Servidor:</strong> bbdd | <strong>Usuario:</strong> root | <strong>Contraseña:</strong> bbdd | <strong>BD:</strong> Peliculas</p>
+            <p style="margin-top: 1rem;"><strong>Tablas (7):</strong></p>
+            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                <li>📊 <strong>Peliculas</strong> (30 registros) - Películas, series, cortometrajes</li>
+                <li>📚 <strong>Libros</strong> (28 registros) - Libros con FK a Autores</li>
+                <li>✍️ <strong>Autores</strong> (27 registros) - Escritores y autores</li>
+                <li>👥 <strong>Clientes</strong> (20 registros) - Usuarios del videoclub-biblioteca</li>
+                <li>🔖 <strong>Reservas</strong> - Historial de reservas</li>
+                <li>🔐 <strong>Usuarios</strong> - Cuentas de acceso</li>
+                <li>? <strong>Otras</strong> - Posibles tablas adicionales</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Relaciones:</strong></p>
+            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                <li>Libros.Autor_Id → Autores.Id (1:N)</li>
+                <li>Peliculas.Adaptación_ID → Libros.id (0:N)</li>
+                <li>Reservas.Id_Cliente → Clientes.Id (N:1)</li>
+                <li>Reservas.Id_Libro → Libros.id (N:1)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="section">
+        <div class="section-title">🚀 Accesos Rápidos</div>
+        <div class="section-content">
+            <div class="quick-links">
+                <a href="login.php" class="link-card">
+                    <strong>🔐 Iniciar Sesión</strong>
+                    <p>Acceso al sistema</p>
+                </a>
+                <a href="verificar_instalacion.php" class="link-card">
+                    <strong>✓ Verificar Setup</strong>
+                    <p>Comprobar instalación</p>
+                </a>
+                <a href="index.php" class="link-card">
+                    <strong>🏠 Panel Principal</strong>
+                    <p>Dashboard</p>
+                </a>
+                <a href="Catalogo.php" class="link-card">
+                    <strong>🎬 Películas</strong>
+                    <p>Catálogo</p>
+                </a>
+                <a href="catalogo_libros.php" class="link-card">
+                    <strong>📚 Libros</strong>
+                    <p>Catálogo</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p><strong>Videoclub-Biblioteca v1.0</strong> - Proyecto Educativo ASETE</p>
+    <p>Desarrollado con PHP, MySQL, HTML5, CSS3</p>
+    <p style="margin-top: 1rem; opacity: 0.8;">© 2024 - Todos los derechos reservados</p>
+</div>
+
+</body>
+</html>

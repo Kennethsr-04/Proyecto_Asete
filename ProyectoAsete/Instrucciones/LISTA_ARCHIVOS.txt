@@ -1,0 +1,461 @@
+================================================================================
+                    ÍNDICE MAESTRO DEL PROYECTO
+         Videoclub-Biblioteca v1.0 - Proyecto Educativo ASETE
+================================================================================
+
+ÚLTIMA ACTUALIZACIÓN: Diciembre 2024
+ESTADO: ✅ COMPLETADO Y FUNCIONAL
+
+================================================================================
+                         ACCESO RÁPIDO
+================================================================================
+
+PARA USUARIOS QUE QUIEREN EMPEZAR YA:
+  1. Lee este archivo (estás aquí)
+  2. Abre INICIO_RAPIDO.html en el navegador
+  3. Sigue los pasos 1-4
+
+PARA DESARROLLADORES:
+  1. Lee README.md (descripción general)
+  2. Lee ESTRUCTURA.md (arquitectura técnica)
+  3. Revisa el código fuente
+
+PARA USUARIOS FINALES:
+  1. Abre login.php
+  2. Consulta INSTRUCCIONES.md si tienes dudas
+
+================================================================================
+                    ESTRUCTURA COMPLETA DE ARCHIVOS
+================================================================================
+
+📂 RAÍZ DEL PROYECTO (32 archivos + carpetas)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔐 AUTENTICACIÓN
+  ├─ login.php ...................... Página de login
+  └─ logout.php ..................... Cierre de sesión
+
+🏠 NAVEGACIÓN PRINCIPAL
+  ├─ index.php ...................... Panel principal / Dashboard
+  ├─ Catalogo.php ................... Catálogo de películas
+  └─ catalogo_libros.php ............ Catálogo de libros
+
+🔍 FILTROS
+  ├─ filtro.php ..................... Filtro de películas
+  └─ filtro_libros.php .............. Filtro de libros
+
+➕ FORMULARIOS
+  ├─ agregar_peliculas.php .......... Formulario agregar película
+  └─ agregar_libros.php ............. Formulario agregar libro
+
+⚙️ MODELOS Y CLASES
+  ├─ Producto.php ................... Clase abstracta base
+  ├─ Pelicula.php ................... Modelo de película
+  ├─ Libro.php ...................... Modelo de libro
+  ├─ InfoComun.php .................. Trait compartido
+  └─ classes/
+      └─ Catalogo.php ............... Data Access Object (DAO)
+
+🔧 CONFIGURACIÓN
+  ├─ db.php ......................... Conexión a BD
+  ├─ internacionalizacion.php ....... Configuración idiomas
+  └─ caja-idiomas.html .............. Selector de idioma
+
+🎨 ESTILOS
+  └─ style/
+      ├─ catalogo.css ............... Estilos catálogos
+      ├─ agregar_pelicula.css ....... Estilos formularios
+      ├─ filtro.css ................. Estilos filtros
+      ├─ login.css .................. Estilos login
+      └─ idioma.css ................. Estilos selector idioma
+
+🌍 IDIOMAS
+  └─ lang/
+      ├─ es.php ..................... Traducciones español
+      └─ en.php ..................... Traducciones inglés
+
+📁 OTROS DIRECTORIOS
+  ├─ img/ ........................... Imágenes (vacío, lista para usar)
+  └─ models/ ........................ Archivos legacy (no utilizados)
+
+🔧 HERRAMIENTAS
+  ├─ verificar_instalacion.php ...... Verificador de setup
+  ├─ generar_hash.php ............... Generador de hashes SHA256
+  └─ estructura_visual.html ......... Visualizador de estructura
+
+================================================================================
+                    DOCUMENTACIÓN (6 archivos)
+================================================================================
+
+📄 Este archivo (LISTA_ARCHIVOS.txt)
+   Índice completo del proyecto con descripciones
+
+📄 README.md (Descripción General)
+   • Qué es el proyecto
+   • Requisitos
+   • Instalación
+   • Estructura general
+   • Funcionalidades
+   • Solución de problemas
+
+📄 INSTRUCCIONES.md (Manual de Usuario)
+   • Cómo usar cada página
+   • Paso a paso para cada operación
+   • Consejos prácticos
+   • Cambio de idioma
+   • Solución de problemas
+
+📄 ESTRUCTURA.md (Documentación Técnica)
+   • Arquitectura de capas
+   • Diagrama de clases
+   • Base de datos (tablas, relaciones)
+   • Flujos de datos
+   • Patrones de diseño
+   • Seguridad implementada
+   • Debugging
+
+📄 CHANGELOG.md (Historial de Cambios)
+   • Versión 1.0
+   • Características nuevas
+   • Cambios técnicos
+   • Correcciones
+
+📄 INICIO_RAPIDO.html (Guía de Inicio)
+   • 6 pasos para empezar
+   • Verificación de instalación
+   • Conexión a BD
+   • Agregar datos
+   • Login
+   • Problemas comunes
+
+📄 SCRIPT_EJEMPLOS.sql (Ejemplos SQL)
+   • Ejemplos de INSERT para películas, libros, clientes
+   • Queries útiles SELECT
+   • Comandos UPDATE/DELETE
+   • Notas sobre restricciones
+
+📄 estructura_visual.html (Visualizador)
+   • Árbol de carpetas visual
+   • Estadísticas del proyecto
+   • Descripción de cada archivo
+   • Links rápidos
+
+================================================================================
+                    ESTADÍSTICAS DEL PROYECTO
+================================================================================
+
+📊 CONTEO GENERAL
+  Archivos PHP:           15
+  Archivos HTML:          2
+  Archivos CSS:           5
+  Archivos JS:            0
+  Archivos Markdown:      4
+  Archivos SQL:           1
+  Archivos Texto:         2
+  Archivos de Config:     3
+  ────────────────────────
+  TOTAL:                  32
+
+📦 POR CATEGORÍA
+  Páginas PHP:            10
+  Clases PHP:             5
+  Hojas de Estilo:        5
+  Archivos de Idioma:     2
+  Documentación:          6
+  Herramientas:           3
+  Configuración:          3
+
+📈 LÍNEAS DE CÓDIGO
+  PHP (estimado):         ~1500 líneas
+  HTML/CSS (estimado):    ~2000 líneas
+  SQL (ejemplos):         ~200 líneas
+
+================================================================================
+                        ARCHIVOS CRÍTICOS
+================================================================================
+
+DEBE EXISTIR PARA QUE FUNCIONE:
+  ✓ db.php                    (Conexión a BD - CRÍTICO)
+  ✓ Catalogo.php (vista)      (Página principal de películas)
+  ✓ login.php                 (Autenticación)
+  ✓ internacionalizacion.php  (Carga de idiomas)
+  ✓ classes/Catalogo.php      (DAO - acceso a datos)
+
+DEBE EXISTIR PARA MEJOR UX:
+  ✓ Pelicula.php              (Modelo de película)
+  ✓ Libro.php                 (Modelo de libro)
+  ✓ lang/es.php               (Español por defecto)
+  ✓ style/catalogo.css        (Estilos básicos)
+
+RECOMENDADO PARA DESARROLLO:
+  ✓ ESTRUCTURA.md             (Documentación técnica)
+  ✓ INSTRUCCIONES.md          (Manual de usuario)
+  ✓ README.md                 (Información general)
+
+================================================================================
+                    FLUJO DE USO DEL PROYECTO
+================================================================================
+
+SECUENCIA TÍPICA DE USUARIO:
+
+1. login.php
+   ├─ Ingresa credenciales
+   └─ Validado contra BD
+
+2. index.php (Panel Principal)
+   ├─ Opción: Películas
+   └─ Opción: Libros
+
+3. OPCIÓN A: Películas
+   ├─ Catalogo.php (Ver todas)
+   │  ├─ filtro.php (Filtrar)
+   │  ├─ agregar_peliculas.php (Agregar)
+   │  └─ Volver a Catálogo
+   └─ index.php (Inicio)
+
+4. OPCIÓN B: Libros
+   ├─ catalogo_libros.php (Ver todas)
+   │  ├─ filtro_libros.php (Filtrar)
+   │  ├─ agregar_libros.php (Agregar)
+   │  └─ Volver a Catálogo
+   └─ index.php (Inicio)
+
+5. logout.php
+   ├─ Destruye sesión
+   └─ Redirige a login.php
+
+================================================================================
+                    PRIMEROS PASOS (RESUMEN)
+================================================================================
+
+1️⃣ VERIFICAR
+   • Abre: verificar_instalacion.php
+   • Comprueba que todo esté ✓ (verde)
+   • Si hay errores, corrígelos
+
+2️⃣ LEER DOCUMENTACIÓN
+   • Lee: INICIO_RAPIDO.html
+   • O abre: README.md
+
+3️⃣ ACCEDER AL SISTEMA
+   • Abre: login.php
+   • Usa credenciales de cliente de la BD
+
+4️⃣ EXPLORAR
+   • Navega por películas y libros
+   • Prueba filtros
+   • Intenta agregar contenido
+
+5️⃣ LEER MÁS
+   • Para usar: INSTRUCCIONES.md
+   • Para desarrollar: ESTRUCTURA.md
+   • Para cambios: CHANGELOG.md
+
+================================================================================
+                    REQUISITOS TÉCNICOS
+================================================================================
+
+SOFTWARE REQUERIDO:
+  • PHP 8.0+ (recomendado 8.2+)
+  • MySQL 5.7+ (recomendado 8.0+)
+  • Servidor web (Apache, Nginx, etc.)
+  • Navegador moderno (Chrome, Firefox, Edge, Safari)
+
+EXTENSIONES PHP:
+  • MySQLi (must-have)
+  • Sessions (must-have)
+  • Hash (recomendado)
+
+BASE DE DATOS:
+  • Servidor: bbdd
+  • Usuario: root
+  • Contraseña: bbdd
+  • Base de datos: Peliculas
+  • Tablas: 7 (Autores, Clientes, Libros, Películas, Reservas, Usuarios, ?)
+
+================================================================================
+                    CARACTERÍSTICAS PRINCIPALES
+================================================================================
+
+🎬 PELÍCULAS
+  ✓ Ver catálogo de BD
+  ✓ Filtrar: género, año, director
+  ✓ Agregar películas nuevas
+  ✓ Soporte para adaptaciones (FK a Libros)
+
+📚 LIBROS
+  ✓ Ver catálogo de BD
+  ✓ Mostrar autor (LEFT JOIN a Autores)
+  ✓ Filtrar: género, autor, año
+  ✓ Agregar libros nuevos
+  ✓ Información completa: título, autor, editorial, páginas, año, precio
+
+🔒 SEGURIDAD
+  ✓ Autenticación por sesión
+  ✓ Protección SQL injection (real_escape_string)
+  ✓ Protección XSS (htmlspecialchars)
+  ✓ Contraseñas en hash SHA256
+
+🌐 IDIOMAS
+  ✓ Español (por defecto)
+  ✓ Inglés
+  ✓ Cambio dinámico de idioma
+
+💾 PERSISTENCIA
+  ✓ Filtros guardan en sesión
+  ✓ Usuario guardado en sesión
+  ✓ Datos persistentes en BD
+
+================================================================================
+                    ACCESOS DESDE EL NAVEGADOR
+================================================================================
+
+PUNTO DE ENTRADA PRINCIPAL:
+  http://localhost/ProyectoAsete/login.php
+
+VERIFICACIÓN:
+  http://localhost/ProyectoAsete/verificar_instalacion.php
+
+PANEL PRINCIPAL (después de login):
+  http://localhost/ProyectoAsete/index.php
+
+PELÍCULAS:
+  http://localhost/ProyectoAsete/Catalogo.php
+
+LIBROS:
+  http://localhost/ProyectoAsete/catalogo_libros.php
+
+DOCUMENTACIÓN (HTML):
+  http://localhost/ProyectoAsete/INICIO_RAPIDO.html
+  http://localhost/ProyectoAsete/estructura_visual.html
+
+================================================================================
+                    ATAJOS Y TIPS
+================================================================================
+
+💡 PARA USUARIOS:
+  • Usa "Limpiar Filtros" para resetear búsquedas
+  • Cambia idioma en la esquina superior derecha
+  • Los filtros se guardan cuando cambias de página
+  • Completa TODOS los campos marcados con * en formularios
+
+💡 PARA DESARROLLADORES:
+  • Todas las queries pasan por clase Catalogo
+  • Los filtros se aplican en PHP (no en BD)
+  • Usar __DIR__ para rutas absolutas en includes
+  • Siempre escapar con real_escape_string()
+  • Siempre mostrar con htmlspecialchars()
+
+💡 PARA ADMINISTRADORES:
+  • Ejecuta verificar_instalacion.php regularmente
+  • Haz backup de la BD "Peliculas"
+  • Revisa logs de error de PHP
+  • Mantén las credenciales de BD seguras
+
+================================================================================
+                    SOLUCIÓN DE PROBLEMAS (RÁPIDO)
+================================================================================
+
+❌ "No se conecta a BD"
+  → Verifica MySQL está corriendo
+  → Comprueba db.php tiene credenciales correctas
+  → Ejecuta: mysql -h bbdd -u root -pbbdd -e "SELECT 1"
+
+❌ "Usuario no encontrado"
+  → Verifica cliente en tabla Clientes
+  → Nombre es case-sensitive
+  → Ejecuta: SELECT * FROM Clientes
+
+❌ "Página en blanco"
+  → Abre verificar_instalacion.php
+  → Habilita display_errors en php.ini
+  → Revisa error_log de Apache/Nginx
+
+❌ "Filtros no funcionan"
+  → Asegúrate de hacer GET (no POST)
+  → Verifica que tabla tenga datos
+  → Limpia cache del navegador
+
+================================================================================
+                    PRÓXIMOS PASOS RECOMENDADOS
+================================================================================
+
+PARA USUARIOS NUEVOS:
+  1. Lee INICIO_RAPIDO.html (5 minutos)
+  2. Abre login.php y accede (2 minutos)
+  3. Explora películas y libros (5 minutos)
+  4. Lee INSTRUCCIONES.md para ayuda
+
+PARA DESARROLLADORES:
+  1. Lee README.md (descripción general)
+  2. Lee ESTRUCTURA.md (arquitectura)
+  3. Revisa el código de Catalogo.php (clase principal)
+  4. Revisa db.php (conexión)
+  5. Modifica según necesites
+
+PARA ADMINISTRADORES:
+  1. Ejecuta verificar_instalacion.php
+  2. Revisa que BD está correcta
+  3. Haz backup de datos
+  4. Crea usuarios de prueba
+  5. Documenta cambios
+
+================================================================================
+                    INFORMACIÓN DE VERSIÓN
+================================================================================
+
+Versión: 1.0
+Fecha: Diciembre 2024
+Estado: ✅ Estable y Funcional
+Desarrollado para: Proyecto Educativo ASETE
+Lenguajes: PHP 8.2+, MySQL, HTML5, CSS3
+Patrón: MVC (parcial)
+Base de Datos: MySQL 5.7.44
+
+================================================================================
+                    CONTACTO Y SOPORTE
+================================================================================
+
+Si necesitas ayuda:
+
+1. Consulta la documentación:
+   - README.md (visión general)
+   - INSTRUCCIONES.md (cómo usar)
+   - ESTRUCTURA.md (técnica)
+   - INICIO_RAPIDO.html (guía paso a paso)
+
+2. Ejecuta verificador:
+   - verificar_instalacion.php
+
+3. Revisa código con comentarios:
+   - Todos los archivos tienen comentarios
+   - Busca "TODO" o "FIXME" si los hay
+
+4. Contacta al profesor:
+   - [Nombre profesor]
+   - [Email]
+   - [Horario atención]
+
+================================================================================
+                    LICENCIA Y DERECHOS
+================================================================================
+
+Este proyecto es material educativo desarrollado para el curso ASETE.
+
+Uso: Libre para fines didácticos y educativos
+Distribución: Permitida con créditos
+Comercial: No permitido sin autorización
+
+================================================================================
+                        FIN DEL ÍNDICE
+================================================================================
+
+Última actualización: Diciembre 2024
+Próxima revisión: [A determinar]
+
+Gracias por usar Videoclub-Biblioteca 🎬📚
+
+Para comenzar, abre:
+→ INICIO_RAPIDO.html
+
+================================================================================

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Rápida de Inicio - Videoclub-Biblioteca</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .step {
+            background: #f5f7fa;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .step p {
+            margin: 0.5rem 0;
+            color: #333;
+        }
+        
+        .code {
+            background: #2d3436;
+            color: #e8e8e8;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .success {
+            background: #d4edda;
+            padding: 1rem;
+            border-left: 4px solid #28a745;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .error {
+            background: #f8d7da;
+            padding: 1rem;
+            border-left: 4px solid #dc3545;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f5f7fa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>🎬📚 Videoclub-Biblioteca</h1>
+        <p>Guía Rápida de Inicio - v1.0</p>
+    </div>
+    
+    <div class="content">
+        
+        <!-- Sección 1: Verificación -->
+        <div class="section">
+            <h2>🔍 Paso 1: Verificar Instalación</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <p><strong>Abre el verificador en tu navegador:</strong></p>
+                <div class="code">http://localhost/ProyectoAsete/verificar_instalacion.php</div>
+                <p><strong>Este verificador comprobará:</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Versión de PHP</li>
+                    <li>Extensión MySQLi</li>
+                    <li>Archivo db.php</li>
+                    <li>Conexión a Base de Datos</li>
+                    <li>Archivos requeridos</li>
+                    <li>Carpetas requeridas</li>
+                    <li>Sesiones PHP</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                ⚠️ <strong>Nota:</strong> Si ves errores en rojo, necesitas corregir esos problemas antes de continuar.
+            </div>
+        </div>
+        
+        <!-- Sección 2: Conectar a BD -->
+        <div class="section">
+            <h2>🗄️ Paso 2: Conectar a Base de Datos</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <p><strong>Inicia tu servidor MySQL</strong></p>
+                <p>Asegúrate de que el servidor "bbdd" está corriendo con:</p>
+                <ul style="margin-left: 2rem;">
+                    <li>Usuario: <code>root</code></li>
+                    <li>Contraseña: <code>bbdd</code></li>
+                    <li>Base de datos: <code>Peliculas</code></li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <p><strong>Verifica la conexión en db.php</strong></p>
+                <p>El archivo contiene:</p>
+                <div class="code">
+$conexion = new mysqli('bbdd', 'root', 'bbdd', 'Peliculas');
+                </div>
+            </div>
+            
+            <div class="success">
+                ✓ La conexión se probará automáticamente en el verificador
+            </div>
+        </div>
+        
+        <!-- Sección 3: Agregar Datos de Prueba -->
+        <div class="section">
+            <h2>📊 Paso 3: Agregar Datos de Prueba (Opcional)</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <p><strong>Si necesitas datos de prueba adicionales:</strong></p>
+                <p>Abre el archivo <code>SCRIPT_EJEMPLOS.sql</code> y copia los comandos que necesites.</p>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <p><strong>Ejecuta en MySQL (phpMyAdmin o línea de comandos):</strong></p>
+                <div class="code">
+-- Ejemplo: Insertar una película
+INSERT INTO Peliculas (Título, Año_estreno, Director, Actores, Género, Tipo_adaptación, Adaptación_ID) 
+VALUES ('Mi película', 2024, 'Director Nombre', 'Actor1, Actor2', 'Drama', 'Película', NULL);
+
+-- Ejemplo: Insertar un libro
+INSERT INTO Libros (Titulo, Autor_Id, Genero, Editorial, Paginas, Año, Precio) 
+VALUES ('Mi libro', 1, 'Ficción', 'Editorial', 300, 2024, 19.99);
+                </div>
+            </div>
+            
+            <div class="highlight">
+                💡 <strong>Consejo:</strong> Los autores (Autor_Id) ya deben existir en la tabla Autores
+            </div>
+        </div>
+        
+        <!-- Sección 4: Login -->
+        <div class="section">
+            <h2>🔐 Paso 4: Acceder al Sistema</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <p><strong>Abre el login en tu navegador:</strong></p>
+                <div class="code">http://localhost/ProyectoAsete/login.php</div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <p><strong>Ingresa credenciales de un cliente de la BD</strong></p>
+                <p>Ejemplos de clientes que deberían existir en tu BD:</p>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>Usuario (Nombre)</th>
+                            <th>Contraseña (SHA256)</th>
+                            <th>Nota</th>
+                        </tr>
+                        <tr>
+                            <td>Juan</td>
+                            <td>Según lo configurado</td>
+                            <td>Primer cliente en BD</td>
+                        </tr>
+                        <tr>
+                            <td>María</td>
+                            <td>Según lo configurado</td>
+                            <td>Segundo cliente en BD</td>
+                        </tr>
+                    </table>
+                </div>
+                <p style="margin-top: 1rem;"><strong>¿No sabes la contraseña?</strong></p>
+                <p>Genera un hash SHA256 con:</p>
+                <div class="code">
+# En terminal:
+echo -n "miContraseña" | sha256sum
+
+# O en PHP:
+<?php echo hash('sha256', 'miContraseña'); ?>
+                </div>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <p><strong>Haz clic en "Iniciar Sesión"</strong></p>
+                <p>Serás redirigido al panel principal si las credenciales son correctas.</p>
+            </div>
+        </div>
+        
+        <!-- Sección 5: Usar el Sistema -->
+        <div class="section">
+            <h2>🎬 Paso 5: Explorar el Sistema</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <p><strong>Panel Principal (Inicio)</strong></p>
+                <p>Tienes dos opciones:</p>
+                <ul style="margin-left: 2rem;">
+                    <li><strong>🎬 Películas:</strong> Ver catálogo de películas</li>
+                    <li><strong>📚 Libros:</strong> Ver catálogo de libros</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <p><strong>Catálogo de Películas</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li><strong>🔍 Filtrar:</strong> Filtra por género, año, director</li>
+                    <li><strong>↺ Limpiar:</strong> Elimina todos los filtros</li>
+                    <li><strong>➕ Añadir:</strong> Agrega una película nueva</li>
+                    <li><strong>📚 Libros:</strong> Cambia a catálogo de libros</li>
+                    <li><strong>🏠 Inicio:</strong> Vuelve al panel principal</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <p><strong>Cambiar Idioma</strong></p>
+                <p>En la esquina superior derecha encontrarás:</p>
+                <ul style="margin-left: 2rem;">
+                    <li>🇪🇸 Español (por defecto)</li>
+                    <li>🇬🇧 Inglés</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Sección 6: Agregar Contenido -->
+        <div class="section">
+            <h2>➕ Paso 6: Agregar Películas y Libros</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <p><strong>Agregar una Película</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Catálogo → Añadir Película</li>
+                    <li>Completa: Título, Año, Director, Género</li>
+                    <li>Haz clic en "Guardar Película"</li>
+                    <li>Verás un mensaje de éxito</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <p><strong>Agregar un Libro</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Catálogo de Libros → Añadir Libro</li>
+                    <li>Completa: Título, Autor (dropdown), Género, Editorial, Páginas, Año, Precio</li>
+                    <li>Haz clic en "Guardar Libro"</li>
+                    <li>El libro aparecerá en el catálogo</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                ⚠️ <strong>Importante:</strong> El Autor debe existir en la tabla Autores. Si ves un error, probablemente el autor no existe en la BD.
+            </div>
+        </div>
+        
+        <!-- Sección 7: Documentación -->
+        <div class="section">
+            <h2>📚 Documentación Disponible</h2>
+            
+            <p>Hay varios documentos que puedes consultar:</p>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Archivo</th>
+                        <th>Contenido</th>
+                        <th>Para Quién</th>
+                    </tr>
+                    <tr>
+                        <td><strong>README.md</strong></td>
+                        <td>Descripción general del proyecto</td>
+                        <td>Todos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>INSTRUCCIONES.md</strong></td>
+                        <td>Manual detallado de uso</td>
+                        <td>Usuarios</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ESTRUCTURA.md</strong></td>
+                        <td>Arquitectura técnica</td>
+                        <td>Desarrolladores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CHANGELOG.md</strong></td>
+                        <td>Historial de cambios</td>
+                        <td>Todos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SCRIPT_EJEMPLOS.sql</strong></td>
+                        <td>Ejemplos de queries SQL</td>
+                        <td>Desarrolladores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>estructura_visual.html</strong></td>
+                        <td>Visualizador de carpetas</td>
+                        <td>Todos</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Sección 8: Solución de Problemas -->
+        <div class="section">
+            <h2>❌ Problemas Comunes y Soluciones</h2>
+            
+            <div class="step">
+                <span class="step-number">❓</span>
+                <p><strong>Error: "No se puede conectar a la base de datos"</strong></p>
+                <p><strong>Solución:</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Verifica que MySQL esté corriendo</li>
+                    <li>Comprueba que el servidor se llama "bbdd"</li>
+                    <li>Verifica usuario: root, contraseña: bbdd</li>
+                    <li>Corre: <code>mysql -h bbdd -u root -pbbdd -e "SELECT 1"</code></li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">❓</span>
+                <p><strong>Error: "Usuario no encontrado" en login</strong></p>
+                <p><strong>Solución:</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Verifica que el cliente existe en tabla Clientes</li>
+                    <li>El nombre es sensible a mayúsculas/minúsculas</li>
+                    <li>Ejecuta: <code>SELECT * FROM Clientes;</code></li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">❓</span>
+                <p><strong>Error: "No se encontraron películas/libros"</strong></p>
+                <p><strong>Solución:</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Haz clic en "Limpiar Filtros"</li>
+                    <li>Si aún no hay resultados, agrega datos</li>
+                    <li>Usa el archivo SCRIPT_EJEMPLOS.sql</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">❓</span>
+                <p><strong>Error: "Autor no encontrado" al agregar libro</strong></p>
+                <p><strong>Solución:</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>El Autor_Id debe existir en tabla Autores</li>
+                    <li>Corre: <code>SELECT Id, Nombre FROM Autores;</code></li>
+                    <li>Selecciona un Id válido del dropdown</li>
+                </ul>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">❓</span>
+                <p><strong>Página en blanco o error fatal</strong></p>
+                <p><strong>Solución:</strong></p>
+                <ul style="margin-left: 2rem;">
+                    <li>Corre verificar_instalacion.php</li>
+                    <li>Revisa los logs de error de PHP</li>
+                    <li>Habilita display_errors en php.ini</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Checklist -->
+        <div class="section">
+            <h2>✅ Checklist de Instalación</h2>
+            
+            <ul class="checklist">
+                <li>PHP 8.0+ instalado y corriendo</li>
+                <li>MySQL corriendo con servidor "bbdd"</li>
+                <li>Base de datos "Peliculas" creada</li>
+                <li>Tablas creadas con datos iniciales</li>
+                <li>Carpeta ProyectoAsete en servidor web</li>
+                <li>Archivo db.php configurado correctamente</li>
+                <li>Carpeta classes/ existe</li>
+                <li>Carpeta lang/ existe</li>
+                <li>Carpeta style/ existe</li>
+                <li>verificar_instalacion.php ejecutado sin errores</li>
+                <li>login.php accesible</li>
+                <li>Credenciales de cliente disponibles</li>
+            </ul>
+        </div>
+        
+        <!-- Botones Finales -->
+        <div class="section" style="text-align: center;">
+            <h2>🚀 ¡Listo para Empezar!</h2>
+            <p>Elige dónde ir:</p>
+            <div class="button-group" style="justify-content: center;">
+                <a href="verificar_instalacion.php" class="btn btn-primary">Verificar Instalación</a>
+                <a href="login.php" class="btn btn-primary">Ir al Login</a>
+                <a href="README.md" class="btn btn-secondary">Leer README</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>
