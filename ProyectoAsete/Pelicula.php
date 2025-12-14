@@ -32,7 +32,12 @@ class Pelicula extends Producto {
         $fila["Adaptación_ID"] ?? $fila["adaptacion_id"] ?? null;
 }
 
-
+    public function getFormato() {
+        return 'N/D'; // valor por defecto
+    }
+    public function getDuracion() {
+        return 'N/D'; // o un valor fijo, por ejemplo 120
+    }
     public function getDirector() {
         return $this->director;
     }

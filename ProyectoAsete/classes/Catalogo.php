@@ -54,7 +54,7 @@ class Catalogo {
         $genero = $this->conexion->real_escape_string($genero);
         $anio = intval($anio);
         $sql = "UPDATE Peliculas 
-                SET Título='$titulo', Año_estreno='$anio-01-01', Director='$director', 
+                SET `Título`='$titulo', Año_estreno='$anio-01-01', Director='$director', 
                     Actores='$actores', Género='$genero'
                 WHERE Id=$id";
         return $this->conexion->query($sql);
@@ -76,8 +76,14 @@ class Catalogo {
     public function reservarPelicula($id_cliente, $id_pelicula) {
         $id_cliente = intval($id_cliente);
         $id_pelicula = intval($id_pelicula);
-        if (!$this->isDisponiblePelicula($id_pelicula)) return false;
-        $sql = "INSERT INTO Reservas (Id_Cliente, Id_Pelicula, Fecha_Reserva) VALUES ($id_cliente, $id_pelicula, NOW())";
+
+        if (!$this->isDisponiblePelicula($id_pelicula)) {
+            return false;
+        }
+
+        $sql = "INSERT INTO Reservas (Id_Cliente, Id_Libro, Fecha_Reserva, Id_Pelicula, Fecha_Devolucion)
+                VALUES ($id_cliente, NULL, CURDATE(), $id_pelicula, NULL)";
+
         return $this->conexion->query($sql);
     }
 
@@ -113,48 +119,13 @@ class Catalogo {
         $sql = "SELECT l.*, a.Nombre as Autor_Nombre 
                 FROM Libros l
                 LEFT JOIN Autores a ON l.Autor_Id = a.Id
-                WHERE l.id = $id";
+                WHERE l.Id = $id";
         $resultado = $this->conexion->query($sql);
         if ($resultado && $resultado->num_rows > 0) {
             $fila = $resultado->fetch_assoc();
             return new Libro($fila);
         }
         return null;
-    }
-
-    public function agregarLibro($titulo, $autorId, $genero, $editorial, $paginas, $anio, $precio) {
-        $titulo = $this->conexion->real_escape_string($titulo);
-        $editorial = $this->conexion->real_escape_string($editorial);
-        $genero = $this->conexion->real_escape_string($genero);
-        $autorId = intval($autorId);
-        $paginas = intval($paginas);
-        $anio = intval($anio);
-        $precio = intval($precio);
-        $sql = "INSERT INTO Libros (Titulo, Autor_Id, Genero, Editorial, Paginas, Año, Precio) 
-                VALUES ('$titulo', $autorId, '$genero', '$editorial', $paginas, '$anio-01-01', $precio)";
-        return $this->conexion->query($sql);
-    }
-
-    public function actualizarLibro($id, $titulo, $autorId, $genero, $editorial, $paginas, $anio, $precio) {
-        $id = intval($id);
-        $titulo = $this->conexion->real_escape_string($titulo);
-        $editorial = $this->conexion->real_escape_string($editorial);
-        $genero = $this->conexion->real_escape_string($genero);
-        $autorId = intval($autorId);
-        $paginas = intval($paginas);
-        $anio = intval($anio);
-        $precio = intval($precio);
-        $sql = "UPDATE Libros 
-                SET Titulo='$titulo', Autor_Id=$autorId, Genero='$genero', 
-                    Editorial='$editorial', Paginas=$paginas, Año='$anio-01-01', Precio=$precio
-                WHERE id=$id";
-        return $this->conexion->query($sql);
-    }
-
-    public function eliminarLibro($id) {
-        $id = intval($id);
-        $sql = "DELETE FROM Libros WHERE id=$id";
-        return $this->conexion->query($sql);
     }
 
     public function isDisponible($id_libro) {
@@ -167,8 +138,13 @@ class Catalogo {
     public function reservarLibro($id_cliente, $id_libro) {
         $id_cliente = intval($id_cliente);
         $id_libro = intval($id_libro);
-        if (!$this->isDisponible($id_libro)) return false;
-        $sql = "INSERT INTO Reservas (Id_Cliente, Id_Libro, Fecha_Reserva) VALUES ($id_cliente, $id_libro, NOW())";
+
+        if (!$this->isDisponible($id_libro)) {
+            return false;
+        }
+
+        $sql = "INSERT INTO Reservas (Id_Cliente, Id_Libro, Fecha_Reserva, Id_Pelicula, Fecha_Devolucion)
+                VALUES ($id_cliente, $id_libro, CURDATE(), NULL, NULL)";
         return $this->conexion->query($sql);
     }
 
@@ -184,15 +160,16 @@ class Catalogo {
 
     // =================== RESERVAS CLIENTE ===================
 
-    public function obtenerReservasCliente($id_cliente) {
+    private function _obtenerReservasBase($id_cliente, $soloActivas = true) {
         $id_cliente = intval($id_cliente);
+        $condicion = $soloActivas ? "AND r.Fecha_Devolucion IS NULL" : "";
         $sql = "SELECT r.*, 
-                l.id as libro_id, l.Titulo as libro_titulo, l.Genero as libro_genero,
-                p.Id as pelicula_id, p.Título as pelicula_titulo, p.Director as pelicula_director
+                l.Id AS libro_id, l.Titulo AS libro_titulo, l.Genero AS libro_genero,
+                p.Id AS pelicula_id, p.`Título` AS pelicula_titulo, p.Director AS pelicula_director
                 FROM Reservas r
-                LEFT JOIN Libros l ON r.Id_Libro = l.id
+                LEFT JOIN Libros l ON r.Id_Libro = l.Id
                 LEFT JOIN Peliculas p ON r.Id_Pelicula = p.Id
-                WHERE r.Id_Cliente = $id_cliente
+                WHERE r.Id_Cliente = $id_cliente $condicion
                 ORDER BY r.Fecha_Reserva DESC";
         $resultado = $this->conexion->query($sql);
         $reservas = [];
@@ -205,43 +182,12 @@ class Catalogo {
     }
 
     public function obtenerReservasActivasCliente($id_cliente) {
-        $id_cliente = intval($id_cliente);
-        $sql = "SELECT r.*, 
-                l.id as libro_id, l.Titulo as libro_titulo, l.Genero as libro_genero,
-                p.Id as pelicula_id, p.Título as pelicula_titulo, p.Director as pelicula_director
-                FROM Reservas r
-                LEFT JOIN Libros l ON r.Id_Libro = l.id
-                LEFT JOIN Peliculas p ON r.Id_Pelicula = p.Id
-                WHERE r.Id_Cliente = $id_cliente AND r.Fecha_Devolucion IS NULL
-                ORDER BY r.Fecha_Reserva DESC";
-        $resultado = $this->conexion->query($sql);
-        $reservas = [];
-        if ($resultado && $resultado->num_rows > 0) {
-            while ($fila = $resultado->fetch_assoc()) {
-                $reservas[] = $fila;
-            }
-        }
-        return $reservas;
+        return $this->_obtenerReservasBase($id_cliente, true);
     }
 
     public function obtenerHistorialDevolucionesCliente($id_cliente) {
-        $id_cliente = intval($id_cliente);
-        $sql = "SELECT r.*, 
-                l.id as libro_id, l.Titulo as libro_titulo, l.Genero as libro_genero,
-                p.Id as pelicula_id, p.Título as pelicula_titulo, p.Director as pelicula_director
-                FROM Reservas r
-                LEFT JOIN Libros l ON r.Id_Libro = l.id
-                LEFT JOIN Peliculas p ON r.Id_Pelicula = p.Id
-                WHERE r.Id_Cliente = $id_cliente AND r.Fecha_Devolucion IS NOT NULL
-                ORDER BY r.Fecha_Devolucion DESC";
-        $resultado = $this->conexion->query($sql);
-        $reservas = [];
-        if ($resultado && $resultado->num_rows > 0) {
-            while ($fila = $resultado->fetch_assoc()) {
-                $reservas[] = $fila;
-            }
-        }
-        return $reservas;
+        return $this->_obtenerReservasBase($id_cliente, false);
     }
+
 }
 ?>

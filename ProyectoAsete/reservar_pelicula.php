@@ -200,13 +200,14 @@ $error = $error ?? '';
         <?php endif; ?>
 
         <div class="pelicula-preview">
-            <div class="pelicula-titulo"><?php echo htmlspecialchars($pelicula->getTitulo()); ?></div>
+
+            <div class="pelicula-detalles"><strong>Duración:</strong> N/D</div>
             <div class="pelicula-detalles"><strong>Director:</strong> <?php echo htmlspecialchars($pelicula->getDirector()); ?></div>
             <div class="pelicula-detalles"><strong>Género:</strong> <?php echo htmlspecialchars($pelicula->getGenero()); ?></div>
             <div class="pelicula-detalles"><strong>Duración:</strong> <?php echo htmlspecialchars($pelicula->getDuracion()); ?> minutos</div>
             <div class="pelicula-detalles"><strong>Formato:</strong> <?php echo htmlspecialchars($pelicula->getFormato()); ?></div>
-            <div class="pelicula-detalles"><strong>Precio:</strong> €<?php echo htmlspecialchars($pelicula->getPrecio()); ?></div>
-
+            <div class="pelicula-detalles"><strong>Precio:</strong> €<?php echo htmlspecialchars($pelicula->getPrecio() ?? 0); ?></div>
+            
             <div class="disponibilidad <?php echo $disponible ? 'si' : 'no'; ?>">
                 <?php echo $disponible ? '✓ Disponible para reservar' : '✗ No disponible'; ?>
             </div>

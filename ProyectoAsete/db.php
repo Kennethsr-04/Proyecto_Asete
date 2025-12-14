@@ -1,13 +1,16 @@
 <?php
-    $servidor = "bbdd";
-    $usuario = "root";
-    $contrasena = "bbdd";
-    $nombre_de_la_bbdd = "Peliculas"; //Nombre de la Base de Datos en PHPMyAdmin dentro de Docker
+$servidor = "bbdd";
+$usuario = "root";
+$contrasena = "bbdd";
+$nombre_de_la_bbdd = "Peliculas";
 
-    $conexion = new mysqli($servidor, $usuario, $contrasena, $nombre_de_la_bbdd);
+$conexion = new mysqli($servidor, $usuario, $contrasena, $nombre_de_la_bbdd);
 
-    if($conexion->connect_error)
-        echo "Conexión error:" . $conexion->connect_error;
-    else   
-        echo "Conectado sin error";
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
+}
+
+// Establecer UTF-8
+$conexion->set_charset("utf8");
+
 ?>

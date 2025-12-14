@@ -223,6 +223,8 @@ unset($_SESSION['exito']);
                             $tipo = "pelicula";
                             $tipo_label = "PELÍCULA";
                         }
+
+                        $fecha_reserva = $reserva['Fecha_Reserva'] ? date('d/m/Y', strtotime($reserva['Fecha_Reserva'])) : 'N/D';
                         ?>
                         <div class="reserva-item">
                             <div class="reserva-info">
@@ -230,7 +232,7 @@ unset($_SESSION['exito']);
                                 <div class="reserva-titulo"><?php echo htmlspecialchars($titulo); ?></div>
                                 <div style="color: #666; font-size: 14px;"><?php echo htmlspecialchars($subtitulo); ?></div>
                                 <div class="reserva-fechas">
-                                    <strong>Fecha de Reserva:</strong> <?=date('d/m/Y', strtotime($reserva['Fecha_Reserva']))?>
+                                    <strong>Fecha de Reserva:</strong> <?=$fecha_reserva?>
                                 </div>
                             </div>
                             <div class="reserva-acciones">
@@ -267,10 +269,12 @@ unset($_SESSION['exito']);
                             $subtitulo = "Director: " . ($reserva['pelicula_director'] ?? "Desconocido");
                             $tipo_label = "PELÍCULA";
                         }
-                        
-                        $fecha_reserva = date('d/m/Y', strtotime($reserva['Fecha_Reserva']));
-                        $fecha_devolucion = date('d/m/Y', strtotime($reserva['Fecha_Devolucion']));
-                        $dias_tenido = (strtotime($reserva['Fecha_Devolucion']) - strtotime($reserva['Fecha_Reserva'])) / 86400;
+
+                        $fecha_reserva = $reserva['Fecha_Reserva'] ? date('d/m/Y', strtotime($reserva['Fecha_Reserva'])) : 'N/D';
+                        $fecha_devolucion = $reserva['Fecha_Devolucion'] ? date('d/m/Y', strtotime($reserva['Fecha_Devolucion'])) : 'N/D';
+                        $dias_tenido = ($reserva['Fecha_Reserva'] && $reserva['Fecha_Devolucion'])
+                            ? (strtotime($reserva['Fecha_Devolucion']) - strtotime($reserva['Fecha_Reserva'])) / 86400
+                            : 0;
                         ?>
                         <div class="reserva-item" style="background: #f5f5f5; opacity: 0.9;">
                             <div class="reserva-info">
