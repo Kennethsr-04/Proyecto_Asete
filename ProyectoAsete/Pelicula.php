@@ -11,17 +11,27 @@ class Pelicula extends Producto {
     private $tipoAdaptacion;
     private $adaptacionId;
 
-    public function __construct($fila) {
-        $this->id         = $fila["ID"];
-        $this->titulo     = $fila["Título"];
-        $this->genero     = $fila["Género"];
-        $this->director   = $fila["Director"];
-        $this->actores    = $fila["Actores"];
-        $this->anio       = substr($fila["Año_estreno"], 0, 4);
-        $this->precio     = null; // no tiene precio
-        $this->tipoAdaptacion = $fila["Tipo_adaptación"];
-        $this->adaptacionId   = $fila["Adaptación_ID"];
-    }
+    public function __construct(array $fila) {
+
+    // Normalizamos claves (solución robusta)
+    $this->id       = $fila["Id"]            ?? $fila["id"]            ?? null;
+    $this->titulo   = $fila["Título"]        ?? $fila["titulo"]        ?? "";
+    $this->genero   = $fila["Género"]        ?? $fila["genero"]        ?? "";
+    $this->director = $fila["Director"]      ?? $fila["director"]      ?? "";
+    $this->actores  = $fila["Actores"]       ?? $fila["actores"]       ?? "";
+
+    $anioCompleto = $fila["Año_estreno"] ?? $fila["anio_estreno"] ?? null;
+    $this->anio = $anioCompleto ? substr($anioCompleto, 0, 4) : "";
+
+    $this->precio = null;
+
+    $this->tipoAdaptacion =
+        $fila["Tipo_adaptación"] ?? $fila["tipo_adaptacion"] ?? "";
+
+    $this->adaptacionId =
+        $fila["Adaptación_ID"] ?? $fila["adaptacion_id"] ?? null;
+}
+
 
     public function getDirector() {
         return $this->director;

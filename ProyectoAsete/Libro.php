@@ -11,17 +11,25 @@ class Libro extends Producto {
     private $editorial;
     private $paginas;
 
-    public function __construct($fila) {
-        $this->id            = $fila["id"];
-        $this->titulo        = $fila["Titulo"];
-        $this->genero        = $fila["Genero"];
-        $this->editorial     = $fila["Editorial"];
-        $this->paginas       = $fila["Paginas"];
-        $this->anio          = substr($fila["Año"], 0, 4);
-        $this->precio        = $fila["Precio"];
-        $this->autorId       = $fila["Autor_Id"];
-        $this->autorNombre   = $fila["Autor_Nombre"] ?? "Desconocido";
-    }
+    public function __construct(array $fila) {
+
+    $this->id        = $fila["Id"]        ?? $fila["id"]        ?? null;
+    $this->titulo    = $fila["Titulo"]    ?? $fila["titulo"]    ?? "";
+    $this->genero    = $fila["Genero"]    ?? $fila["genero"]    ?? "";
+    $this->editorial = $fila["Editorial"] ?? $fila["editorial"] ?? "";
+    $this->paginas   = $fila["Paginas"]   ?? $fila["paginas"]   ?? 0;
+    $this->precio    = $fila["Precio"]    ?? $fila["precio"]    ?? null;
+
+    $anioCompleto = $fila["Año"] ?? $fila["anio"] ?? null;
+    $this->anio = $anioCompleto ? substr($anioCompleto, 0, 4) : "";
+
+    $this->autorId =
+        $fila["Autor_Id"] ?? $fila["autor_id"] ?? null;
+
+    $this->autorNombre =
+        $fila["Autor_Nombre"] ?? $fila["autor_nombre"] ?? "Desconocido";
+}
+
     
     public function getAutorId() {
         return $this->autorId;
