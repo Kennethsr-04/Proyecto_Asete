@@ -1,0 +1,9 @@
+@import 'global.css';
+
+body { display:flex; justify-content:center; align-items:center; min-height:100vh; }
+.caja-login { width:360px; border-radius:12px; padding:20px; box-shadow:var(--shadow); background:var(--surface); }
+h1 { text-align:center; color:var(--primary); margin:0 0 8px; }
+label { display:block; margin-top:12px; font-weight:600; color:var(--muted); }
+input { box-sizing:border-box; }
+.error { background:#fff7f0; color:#7a2b2b; padding:8px 10px; border-radius:8px; margin-top:10px; text-align:center; }
+.actions { margin-top:16px; }

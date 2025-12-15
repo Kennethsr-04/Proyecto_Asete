@@ -1,0 +1,6 @@
+@import 'global.css';
+
+.filtro-form { max-width:640px; margin:0 auto 22px; }
+form { padding:16px; }
+label { display:block; margin-top:10px; font-weight:600; color:var(--muted); }
+.acciones { margin-top:12px; display:flex; gap:10px; }

@@ -1,0 +1,11 @@
+@import 'global.css';
+
+.catalog-actions { margin-bottom:16px; }
+
+table { background:transparent; }
+th { background:transparent; color:var(--muted); }
+tr:hover { background: rgba(79,70,229,0.03); }
+
+.sin-resultados { background:#fff7f0; color:#7a2b2b; padding:10px; border-radius:8px; }
+
+.card-table { padding: 8px; border-radius:10px; box-shadow: var(--shadow); background:var(--surface); }

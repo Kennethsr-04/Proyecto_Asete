@@ -1,0 +1,13 @@
+@import 'global.css';
+
+.agregar-form { max-width: 640px; margin: 0 auto; }
+
+form { padding:18px; }
+
+label { display:block; margin-top:10px; font-weight:600; color:var(--muted); }
+
+.mensaje { margin-bottom:12px; color: #15803d; }
+.error { color: #bf1e2e; }
+
+.actions { display:flex; gap:10px; margin-top:14px; }
+.actions .btn { flex: none; }
