@@ -1,0 +1,27 @@
+@import 'global.css';
+
+body { background: #f5f5f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+.container { background: var(--surface); border: 1px solid var(--border); padding: 30px; max-width: 800px; }
+h1 { text-align: center; margin-top: 0; }
+
+.check-section { margin-bottom: 15px; padding: 12px; border-left: 3px solid #ddd; }
+.check-section.success { border-left-color: #28a745; background: #d4edda; }
+.check-section.error { border-left-color: #dc3545; background: #f8d7da; }
+.check-section.warning { border-left-color: #ffc107; background: #fff3cd; }
+
+.check-title { font-weight: bold; display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+.icon { font-size: 1.2rem; }
+.check-message { margin-left: 20px; color: var(--muted); font-size: 0.9rem; }
+
+.file-list { list-style: none; margin-left: 20px; margin-top: 5px; padding: 0; }
+.file-list li { padding: 3px 0; color: var(--muted); font-family: monospace; font-size: 0.85rem; }
+.file-list li:before { content: "✓ "; color: #28a745; font-weight: bold; margin-right: 5px; }
+.file-list li.missing:before { content: "✗ "; color: #dc3545; }
+
+.button-group { text-align: center; margin-top: 20px; }
+.btn { padding: 8px 16px; margin: 5px; }
+
+.summary { background: #f9f9f9; border: 1px solid var(--border); padding: 15px; margin-top: 20px; text-align: center; }
+.summary-status { font-size: 1.3rem; font-weight: bold; margin-bottom: 10px; }
+.status-ready { color: #28a745; }
+.status-error { color: #dc3545; }

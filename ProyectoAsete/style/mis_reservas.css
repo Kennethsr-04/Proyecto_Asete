@@ -1,0 +1,21 @@
+@import 'global.css';
+
+.contenedor-reservas { max-width: 1000px; margin: 20px auto; padding: 20px; }
+.seccion-reservas { margin-bottom: 30px; }
+.seccion-reservas h2 { border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; }
+
+.reserva-item { background: #f9f9f9; border: 1px solid var(--border); padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+.reserva-info { flex: 1; }
+.reserva-titulo { font-size: 16px; font-weight: bold; margin-bottom: 5px; }
+
+.reserva-tipo { display: inline-block; padding: 3px 8px; border-radius: var(--radius); font-size: 12px; font-weight: bold; margin-bottom: 5px; background: #e3f2fd; color: #1976d2; }
+.reserva-tipo.pelicula { background: #fce4ec; color: #c2185b; }
+
+.reserva-fechas { color: var(--muted); font-size: 13px; margin-top: 5px; }
+.reserva-acciones { display: flex; gap: 8px; }
+
+.btn-devolver { background: #ff5722; color: #fff; border: none; padding: 6px 12px; border-radius: var(--radius); cursor: pointer; font-weight: bold; }
+.btn-devolver:hover { background: #e64a19; }
+
+.mensaje-vacio { text-align: center; color: var(--muted); padding: 30px; font-size: 14px; }
+.enlace-inicio { display: inline-block; margin-top: 15px; padding: 8px 16px; background: var(--primary); color: #fff; text-decoration: none; border-radius: var(--radius); }

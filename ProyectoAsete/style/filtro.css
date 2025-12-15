@@ -1,42 +1,28 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6fa;
-    padding: 30px;
-}
+@import 'global.css';
 
-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
-    max-width: 500px;
-    margin-bottom: 30px;
-}
+.user-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 15px; }
+.user-greeting { font-size: 1rem; }
+.user-name { font-weight: bold; }
+.btn-logout { background: #dc3545; color: #fff; }
+.btn-logout:hover { background: #c82333; }
 
-label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
+.filtro-estado { background: #f9f9f9; padding: 15px; border: 1px solid var(--border); margin-bottom: 15px; }
+.filtro-grupo { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
 
-select, input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
+.filtro-btn { padding: 8px 12px; border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius); cursor: pointer; font-weight: bold; text-decoration: none; color: var(--text); display: inline-block; }
+.filtro-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.filtro-btn.activo { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-button {
-    margin-top: 15px;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-}
+.switch-tipo { display: flex; gap: 10px; margin-bottom: 15px; }
+.switch-tipo a { padding: 8px 16px; text-decoration: none; font-weight: bold; background: #e9ecef; color: var(--text); border: 1px solid var(--border); }
+.switch-tipo a:hover { background: var(--primary); color: #fff; }
+.switch-tipo a.activo { background: var(--primary); color: #fff; }
 
-button:hover {
-    background: #0056b3;
-}
+.contador { background: #d1ecf1; color: #0c5460; padding: 10px 15px; border-radius: var(--radius); font-weight: bold; display: inline-block; margin-bottom: 15px; border: 1px solid #bee5eb; }
+
+.btn { display: inline-block; padding: 8px 16px; background: var(--primary); color: #fff; text-decoration: none; border-radius: var(--radius); }
+.btn:hover { background: #0056b3; }
+.btn-secondary { background: #6c757d; }
+.btn-secondary:hover { background: #5a6268; }
+
+.btn-accion { display: inline-block; padding: 6px 10px; text-decoration: none; border-radius: var(--radius); font-size: 12px; font-weight: bold; }

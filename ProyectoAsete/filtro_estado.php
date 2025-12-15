@@ -59,73 +59,8 @@ if ($tipo === 'peliculas') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filtro por Estado - <?=$traducciones["titulo"]?></title>
     <link rel="stylesheet" href="style/catalogo.css">
+    <link rel="stylesheet" href="style/filtro.css">
     <link rel="stylesheet" href="style/idioma.css">
-    <style>
-        .filtro-estado {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .filtro-grupo {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .filtro-btn {
-            padding: 8px 16px;
-            border: 2px solid #ddd;
-            background: white;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            text-decoration: none;
-            color: #333;
-            display: inline-block;
-        }
-
-        .filtro-btn:hover,
-        .filtro-btn.activo {
-            background: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
-
-        .switch-tipo {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .switch-tipo a {
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            background: #e9ecef;
-            color: #333;
-            transition: all 0.3s;
-        }
-
-        .switch-tipo a.activo {
-            background: #007bff;
-            color: white;
-        }
-
-        .contador {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 10px 15px;
-            border-radius: 4px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-    </style>
 </head>
 <body>
 <?php include "caja-idiomas.html"; ?>

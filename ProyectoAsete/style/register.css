@@ -1,0 +1,19 @@
+@import 'global.css';
+
+.caja-login { max-width: 450px; margin: 40px auto; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.form-row.full { grid-template-columns: 1fr; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-group input, .form-group select { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 1rem; }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+
+.password-match { font-size: 0.85rem; margin-top: 3px; }
+.password-match.ok { color: #28a745; }
+.password-match.error { color: #dc3545; }
+
+.register-link { text-align: center; margin-top: 20px; }
+.register-link a { color: var(--primary); font-weight: bold; }
+
+button { width: 100%; padding: 10px; background: var(--primary); color: #fff; border: none; border-radius: var(--radius); font-weight: bold; cursor: pointer; font-size: 1rem; }
+button:hover { background: #0056b3; }
